@@ -1,0 +1,22 @@
+{
+  "name": "merenga cake order intake",
+  "description": "Gmail -> AI parse -> Notion order -> customer auto-reply.",
+  "keywords": ["fastapi", "gmail", "notion", "openai"],
+  "buildpacks": [{ "url": "heroku/python" }],
+  "addons": ["scheduler:standard"],
+  "env": {
+    "OPENAI_API_KEY": { "description": "OpenAI API key" },
+    "OPENAI_MODEL": { "value": "gpt-4o-mini", "required": false },
+    "NOTION_TOKEN": { "description": "Notion internal integration secret" },
+    "NOTION_DATABASE_ID": { "description": "Orders database id" },
+    "NOTION_STATUS": { "value": "New Order", "required": false },
+    "GMAIL_ADDRESS": { "description": "Gmail inbox that receives orders" },
+    "GMAIL_APP_PASSWORD": { "description": "16-char Google App Password" },
+    "SENDER_FILTER": { "value": "form-submission@squarespace.info", "required": false },
+    "ORDER_KEYWORDS": { "value": "cake,order,custom cake,inquiry,cupcake,dessert,birthday,wedding", "required": false },
+    "BUSINESS_NAME": { "value": "merenga cakes", "required": false },
+    "REPLY_MODE": { "value": "send", "required": false },
+    "DRY_RUN": { "value": "true", "required": false },
+    "MAX_PER_RUN": { "value": "10", "required": false }
+  }
+}
